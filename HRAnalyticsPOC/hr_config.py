@@ -37,3 +37,30 @@ COMMENTS = {
     "schema_ops": "Operational HR data including metrics and analytics",
     "volume": "Volume for storing HR files, documents, and data assets"
 }
+
+# Employees Table Load Configuration
+EMPLOYEES_KEY_COLUMN = "employee_id"
+EMPLOYEES_TABLE_COMMENT = "Core employee master records onboarded from HR CSV exports"
+EMPLOYEES_LOAD_MODE = "append"
+
+# HR Tickets Validation Configuration
+HR_TICKETS_KEY_COLUMN = "ticket_id"
+HR_TICKETS_REQUIRED_COLUMNS = [
+    "ticket_id",
+    "employee_id",
+    "category",
+    "priority",
+    "status",
+    "created_timestamp",
+]
+HR_TICKETS_NOT_NULL_COLUMNS = [
+    "ticket_id",
+    "employee_id",
+    "category",
+    "priority",
+    "status",
+    "created_timestamp",
+]
+HR_TICKETS_ALLOWED_PRIORITIES = ["low", "medium", "high", "critical"]
+HR_TICKETS_ALLOWED_STATUSES = ["open", "in_progress", "on_hold", "resolved", "closed"]
+HR_TICKETS_CLOSED_STATUSES = ["resolved", "closed"]
