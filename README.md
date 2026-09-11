@@ -1,154 +1,53 @@
-**Claude Code Assignment - HR Analytics Platform**
-Overview
+# Claude Code Assignment - HR Analytics Platform
 
-This assignment demonstrates the use of Claude Code capabilities including:
+## Overview
+This project demonstrates key Claude Code capabilities using a Databricks-based HR Analytics Platform built with Unity Catalog, Delta Tables, Volumes, and HR datasets.
 
-Slash Commands
-Subagents
-Skills
-Custom Instructions
-Agentic Workflow
-MCP Integration
+## Scenarios Implemented
 
-The implementation is based on an HR Analytics Proof of Concept (POC) built on Databricks using Unity Catalog, Delta Tables, Volumes, and HR operational datasets.
+### 1. Repeatable Workflow
+Created a reusable `/code_review` slash command to perform structured code reviews covering:
+- Code quality
+- Naming conventions
+- Error handling
+- Logging
+- Security
+- Test coverage
 
-**Scenario 1: Repeatable Workflow**
-Objective
+### 2. Context Management with Subagents
+Used subagents to investigate repository-wide references of `SCHEMA_OPS`, enabling efficient analysis without overloading the main context.
 
-Automate a recurring code review process using a Claude Code slash command.
+### 3. Packaging a Skill
+Developed a reusable **HR Data Onboarding** skill that automates:
+- File validation
+- Schema validation
+- Delta table creation
+- Data loading
+- Data quality checks
 
-Implementation
+### 4. Standards Enforcement
+Implemented repository-level coding standards through `CLAUDE.md`, including:
+- Consistent naming conventions
+- Mandatory error handling
+- Standardized logging practices
 
-Created a reusable slash command:
-/code_review
+### 5. Agentic Workflow
+Applied a structured debugging workflow:
+1. Reproduce
+2. Diagnose
+3. Fix
+4. Verify
 
-Location:
-.claude/commands/code_review.md
-``
+### 6. MCP Integration
+Evaluated MCP capabilities for live data access. Configured a GitHub MCP server and validated repository-based queries.
 
-The command performs a structured review covering:
+## Key Learnings
+- Slash commands improve workflow consistency.
+- Subagents simplify large-scale investigations.
+- Skills enable reusable operational processes.
+- `CLAUDE.md` enforces coding standards.
+- Agentic workflows improve debugging quality.
+- MCP provides real-time data grounding.
 
-Code quality
-Naming conventions
-Error handling
-Logging
-Security concerns
-Test coverage
-
-**Scenario 2: Context Management with Subagents**
-Objective
-
-Delegate repository investigation to a subagent before making changes.
-
-Implementation
-
-Task:
-Find every usage of SCHEMA_OPS
-
-Claude created a subagent to:
-
-Investigate the repository
-Search files
-Analyze references
-
-**Scenario 3: Packaging a Skill**
-Objective
-
-Convert a frequently repeated onboarding process into a reusable Claude Skill.
-
-Skill Created
-HR Data Onboarding
-
-Location:
-.claude/skills/hr-data-onboarding/SKILL.md
-
-Defined Process
-Validate source files
-Validate schema
-Create Delta table
-Load data
-Validate counts
-Confirm readiness
-Validation
-
-Natural language request:
-I received a new employee csv export.
-what steps should I follow to load it into our HR analytics platform and verify everything was created correctly?
-
-Claude automatically invoked the skill without the skill name being mentioned.
-
-Outcome
-Skill created
-Trigger conditions defined
-Auto-discovery confirmed
-
-**Scenario 4: Enforcing Standards Automatically**
-Objective
-
-Apply team coding conventions through a repository-level instruction file.
-
-Instructions File
-CLAUDE.md
-
-Standards Implemented
-Naming Convention:
-snake_case for functions and variables
-UPPER_CASE for constants
-
-Error Handling:
-Mandatory try/except for external operations
-
-Logging:
-Use logger.info()
-Use logger.error()
-No print() statements
-
-**Scenario 5: Agentic Loop Discipline**
-Objective
-
-Ensure Claude follows a structured engineering workflow.
-
-Bug Report
-The HR ticket validation process crashes when ticket_id is missing.
-
-Required Workflow
-Reproduce
-Diagnose
-Propose Fix
-Apply Fix
-Verify
-
-**Scenario 6: Live Data Grounding via MCP**
-Objective
-
-Verify Claude retrieves live data from an MCP server rather than relying on model knowledge.
-
-Validation Performed
-List available MCP servers.
-
-Result:
-No MCP servers are configured.
-
-Findings
-The environment did not contain a configured MCP server.
-
-Created MCP server for Github account
-Once configured, questions such as:
-Show latest commits in this repository.
-
-Outcome:
-MCP capability evaluated
-Environment limitation documented
-Configuration requirement identified
-
-**Key Learnings:**
-Slash commands improve repeatability and consistency.
-Subagents help isolate large investigations from the main context.
-Skills are effective for documenting reusable operational processes.
-CLAUDE.md enables organization-wide coding standards enforcement.
-Agentic workflows improve debugging quality and traceability.
-MCP provides live data access and reduces dependency on model knowledge.
-
-**Conclusion:**
-This project successfully demonstrated core Claude Code capabilities across workflow automation, skill packaging, standards enforcement, agentic debugging, and MCP evaluation using a Databricks-based HR Analytics platform.
-
+## Conclusion
+This assignment successfully demonstrates workflow automation, skill creation, standards enforcement, agentic debugging, and MCP integration using Claude Code within an HR Analytics platform.
